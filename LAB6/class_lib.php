@@ -86,7 +86,7 @@ class juego extends soporte {
         if ( $this->min_num_jugadores == $this->max_num_jugadores ) {
             if ( $this->min_num_jugadores == 1 )
             echo '<br>Para un jugador';
-            else{
+            else {
                 echo '<br>Para ' . $this->min_num_jugadores . ' jugadores';
             }
         } else {
@@ -97,13 +97,23 @@ class juego extends soporte {
 
 class Foo {
     public static $mi_static = 'foo';
+
     public function staticValor() {
-    return self::$mi_static;
+        return self::$mi_static;
     }
-    }
-    class Bar extends Foo {
+}
+
+class Bar extends Foo {
     public function fooStatic() {
-    return parent::$mi_static;
+        return parent::$mi_static;
     }
+}
+
+class MiClase {
+    const constante = 'valor constante';
+
+    function mostrarConstante() {
+        echo self::constante . '\n';
     }
+}
 ?>
