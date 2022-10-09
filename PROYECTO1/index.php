@@ -39,6 +39,7 @@
             <th>Fecha</th>
             <th>Eliminar</th>
         </tr>
+        
         <?php
         include "clases/datos_agenda.php";
         //validar los datos del formulario no esten vacios
