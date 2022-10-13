@@ -7,10 +7,11 @@
 </head>
 
 <body>
-    <h1 align = center>Filtro de tareas</h1>
-
+<h1>Filtro de tareas</h1>
+<img src="css/AB.gif" alt="logo" class="logo">
 <div class="contenedor">
         <nav class="menu">
+            
             <ul>
                 <li><a href="index.php">Agregar Tarea</a></li>
                 <li><a href="tareas.php">Mostrar Tareas</a></li>
@@ -19,6 +20,7 @@
         </nav>
     </div>
     <br><br><br>
+    <div class="container" id="caja">
     <h2>Para el filtro de fecha utilizar el formato 2022-10-07</h2>
     <Form name="Formfiltro" method="post" action="mostrar_todo.php">
         <br/>
@@ -33,12 +35,12 @@
                 
             </OPTION>
         </SELECT>
-        con el valor
+       con el valor
         <input type="text" name="valor">
         <input name="ConsultarFiltro" value="Filtrar Datos" type="submit"/>
         <input name="ConsultarTodos" value="Ver Todos" type="submit"/>
     </Form>
-    
+    </div>
     <?php
 
     require_once('class/agenda_funciones.php');
