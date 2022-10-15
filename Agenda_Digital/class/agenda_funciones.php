@@ -1,7 +1,7 @@
 <?php
 //guardar los datos en la base de datos
 require_once('modelo.php');
-//conectar a la base de datos
+//conectar a la base de datos   
 class Agenda extends modeloCredencialesBD{
     protected $categoria;
     protected $titulo;
@@ -110,15 +110,15 @@ class Agenda extends modeloCredencialesBD{
         $this->repetir = $repetir;
         $this->hora_inicio = $hora_inicio;
         $this->hora_fin = $hora_fin;
-        $instruccion = "CALL actualizar_tarea('$this->id', '$this->categoria', '$this->titulo', '$this->descripcion', '$this->correo', '$this->ubicacion', '$this->fecha', '$this->repetir', '$this->hora_inicio', '$this->hora_fin')";
+        $instruccion = "CALL actualizar_tarea('$this->id','$this->categoria', '$this->titulo', '$this->descripcion', '$this->correo', '$this->ubicacion', '$this->fecha', '$this->repetir', '$this->hora_inicio', '$this->hora_fin')";
         $consulta = $this->_db->query($instruccion);
-        $resultado = $consulta->fetch_all(MYSQLI_ASSOC);
-        if(!$resultado){
-            echo "Fallo al actualizar la tarea";
+        //$resultado = $consulta->fetch_all(MYSQLI_ASSOC);
+        if($consulta==0){
+            echo "Fallo al actualizar la tarea <hr>";
         }else{
             echo "Tarea actualizada correctamente";
-            return $resultado;
-            $resultado->close();
+           // return $resultado;
+            //$consulta->close();
             $this->_db->close();
         }
     }
