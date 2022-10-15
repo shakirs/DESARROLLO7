@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 //Obtener id de la tarea desde editar.php
 $id = $_GET[ 'id' ];
 $categoria = $_GET[ 'categoria' ];
@@ -19,7 +19,7 @@ $agenda = new Agenda();
 $agenda->actualizar_tarea( $id, $categoria, $titulo, $descripcion, $correo, $ubicacion, $fecha, $repeticion, $hora_inicio, $hora_fin );
 //Hacer refresh a la página tareas.php
 header( 'Location: tareas.php' );
-=======
+
 require_once('class/agenda_funciones.php');
 //Obtener id de la tarea desde editar.php
 $id = (int) $_GET['id'];
@@ -40,4 +40,3 @@ $agenda->actualizar_tarea($id, $categoria, $titulo, $descripcion, $correo, $ubic
 //Redireccionar a la página principal
 //header('Location: index.php');
 ?>
->>>>>>> e3605b4674be6018c5b555d547f49ea50851f535
