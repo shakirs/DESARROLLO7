@@ -54,6 +54,7 @@ $tareas = $agenda->visualizar_tarea($_GET['id']);
 
 
 foreach ($tareas as $tarea) {
+<<<<<<< HEAD
     echo "<form action='actualizar.php' method='POST'>";
     //input para id
     echo "<td><input type='hidden' name='id' value='" . $tarea['id'] . "'></td>";
@@ -84,5 +85,27 @@ foreach ($tareas as $tarea) {
 
 ?>
 
+=======
+  
+} 
+
+?>
+
+<form action="actualizar.php">
+<td><input type="hidden" name="id" value="<?php echo $tarea['id']?>"></td>
+<tr>
+<td><input type="text" name="categoria" value="<?php echo $tarea['categoria']?>"></td>
+<td><input type="text" name="titulo" value="<?php echo $tarea['titulo']?>"></td>
+<td><input type='text' name='descripcion' value="<?php echo $tarea['descripcion'] ?>"></td>
+<td><input type="text" name="correo" value="<?php echo $tarea['correo']?>"></td>
+<td><input type="text" name="ubicacion" value="<?php echo $tarea['ubicacion']?>"></td>
+<td><input type="date" name="fecha" value="<?php echo $tarea['fecha']?>"></td>
+<td><input type="text" name="repetir" value="<?php echo $tarea['repeticion']?>"></td>
+<td><input type="time" name="hora_inicio" value="<?php echo $tarea['hora_inicio']?>"></td>
+<td><input type="time" name="hora_fin" value="<?php echo $tarea['hora_fin']?>"></td>
+<td><input type="submit" value="actualizar"></td>
+</tr>
+</form>
+>>>>>>> e3605b4674be6018c5b555d547f49ea50851f535
 
 </html>
