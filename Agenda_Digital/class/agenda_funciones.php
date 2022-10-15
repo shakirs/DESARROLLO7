@@ -1,15 +1,13 @@
 <?php
 //guardar los datos en la base de datos
-<<<<<<< HEAD
 require_once( 'modelo.php' );
 //conectar a la base de datos
 
 class Agenda extends modeloCredencialesBD {
-=======
+
 require_once('modelo.php');
 //conectar a la base de datos   
 class Agenda extends modeloCredencialesBD{
->>>>>>> e3605b4674be6018c5b555d547f49ea50851f535
     protected $categoria;
     protected $titulo;
     protected $descripcion;
@@ -125,7 +123,7 @@ class Agenda extends modeloCredencialesBD{
         $this->repeticion = $repeticion;
         $this->hora_inicio = $hora_inicio;
         $this->hora_fin = $hora_fin;
-<<<<<<< HEAD
+
         $instruccion = "CALL actualizar_tarea('$this->id', '$this->categoria', '$this->titulo', '$this->descripcion', '$this->correo', '$this->ubicacion', '$this->fecha', '$this->repeticion', '$this->hora_inicio', '$this->hora_fin')";
         $consulta = $this->_db->query( $instruccion );
         $resultado = $consulta->fetch_all( MYSQLI_ASSOC );
@@ -137,7 +135,7 @@ class Agenda extends modeloCredencialesBD{
             echo 'Tarea actualizada correctamente';
             return $resultado;
             $resultado->close();
-=======
+
         $instruccion = "CALL actualizar_tarea('$this->id','$this->categoria', '$this->titulo', '$this->descripcion', '$this->correo', '$this->ubicacion', '$this->fecha', '$this->repetir', '$this->hora_inicio', '$this->hora_fin')";
         $consulta = $this->_db->query($instruccion);
         //$resultado = $consulta->fetch_all(MYSQLI_ASSOC);
@@ -147,7 +145,6 @@ class Agenda extends modeloCredencialesBD{
             echo "Tarea actualizada correctamente";
            // return $resultado;
             //$consulta->close();
->>>>>>> e3605b4674be6018c5b555d547f49ea50851f535
             $this->_db->close();
         }
 

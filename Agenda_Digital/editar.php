@@ -54,7 +54,6 @@ $tareas = $agenda->visualizar_tarea($_GET['id']);
 
 
 foreach ($tareas as $tarea) {
-<<<<<<< HEAD
     echo "<form action='actualizar.php' method='POST'>";
     //input para id
     echo "<td><input type='hidden' name='id' value='" . $tarea['id'] . "'></td>";
@@ -85,7 +84,6 @@ foreach ($tareas as $tarea) {
 
 ?>
 
-=======
   
 } 
 
@@ -106,6 +104,5 @@ foreach ($tareas as $tarea) {
 <td><input type="submit" value="actualizar"></td>
 </tr>
 </form>
->>>>>>> e3605b4674be6018c5b555d547f49ea50851f535
 
 </html>
