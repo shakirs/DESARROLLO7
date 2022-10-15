@@ -149,3 +149,19 @@ END
 
 
 
+
+
+
+
+
+
+
+-- CREAR PROCEDIMIENTO ALMACENADO PARA VISUALIZAR UNA TAREA POR SU ID  Y ACTUALIZARLA POR SU ID --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `visualizar_actualizar_tarea`(IN `p_id` INT, IN `p_categoria` VARCHAR(100), IN `p_titulo` VARCHAR(100), IN `p_descripcion` VARCHAR(100), IN `p_correo` VARCHAR(100), IN `p_ubicacion` VARCHAR(100), IN `p_fecha` DATE, IN `p_repeticion` VARCHAR(100), IN `p_hora_inicio` TIME, IN `p_hora_fin` TIME)
+BEGIN
+SELECT * FROM tareas WHERE id = p_id;
+UPDATE tareas SET categoria = p_categoria, titulo = p_titulo, descripcion = p_descripcion, correo = p_correo, ubicacion = p_ubicacion, fecha = p_fecha, repeticion = p_repeticion, hora_inicio = p_hora_inicio, hora_fin = p_hora_fin WHERE id = p_id;
+END
+
+
+

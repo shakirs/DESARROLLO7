@@ -8,7 +8,6 @@
 
 <body>
 <h1>Filtro de tareas</h1>
-<img src="css/AB.gif" alt="logo" class="logo">
 <div class="contenedor">
         <nav class="menu">
             
@@ -90,9 +89,11 @@
             echo "<td>" . $tarea['hora_inicio'] . "</td>";
             echo "<td>" . $tarea['hora_fin'] . "</td>";
             echo "<td>";
-            echo "<a href='editar.php?id=" . $tarea['id'] . "'>Editar</a>";
+            //echo "<a href='editar.php?id=" . $tarea['id'] . "'>Editar</a>";
             echo " | ";
-            echo "<a href='mostrar_todo.php?id=" . $tarea['id'] . "'>Eliminar</a>";
+            // enviar todos los datos de la tarea por get
+            echo "<a href='editar.php?id=" . $tarea['id'] . "&categoria=" . $tarea['categoria'] . "&titulo=" . $tarea['titulo'] . "&descripcion=" . $tarea['descripcion'] . "&correo=" . $tarea['correo'] . "&ubicacion=" . $tarea['ubicacion'] . "&fecha=" . $tarea['fecha'] . "&repeticion=" . $tarea['repeticion'] . "&hora_inicio=" . $tarea['hora_inicio'] . "&hora_fin=" . $tarea['hora_fin'] . "'>Editar</a>";
+            echo "<a href='mostrar_todo.php?id=" . $tarea['id'] . "'> | Eliminar</a>";
             echo "</td>";
             echo "</tr>";
         }

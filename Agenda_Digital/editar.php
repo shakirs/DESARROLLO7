@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Agenda Digital</title>
@@ -51,8 +52,9 @@ require_once('class/agenda_funciones.php');
 $agenda = new Agenda();
 $tareas = $agenda->visualizar_tarea($_GET['id']);
 
+
 foreach ($tareas as $tarea) {
-    
+    echo "<form action='actualizar.php' method='POST'>";
     //input para id
     echo "<td><input type='hidden' name='id' value='" . $tarea['id'] . "'></td>";
     echo "<tr>";
@@ -67,21 +69,20 @@ foreach ($tareas as $tarea) {
     //input para la ubicacion
     echo "<td><input type='text' name='ubicacion' value='" . $tarea['ubicacion'] . "'></td>";
     //input para la fecha
-    echo "<td><input type='text' name='fecha' value='" . $tarea['fecha'] . "'></td>";
+    echo "<td><input type='date' name='fecha' value='" . $tarea['fecha'] . "'></td>";
     //input para la repetir
-    echo "<td><input type='text' name='repetir' value='" . $tarea['repeticion'] . "'></td>";
+    echo "<td><input type='text' name='repeticion' value='" . $tarea['repeticion'] . "'></td>";
     //input para la hora inicio
-    echo "<td><input type='text' name='hora_inicio' value='" . $tarea['hora_inicio'] . "'></td>";
+    echo "<td><input type='time' name='hora_inicio' value='" . $tarea['hora_inicio'] . "'></td>";
     //input para la hora fin
-    echo "<td><input type='text' name='hora_fin' value='" . $tarea['hora_fin'] . "'></td>";
+    echo "<td><input type='time' name='hora_fin' value='" . $tarea['hora_fin'] . "'></td>";
 
-    echo "<td><a href='actualizar.php?id=" . $tarea['id'] . "'>Actualizar</a></td>";
+    echo "<td><a href='actualizar.php?id=" . $tarea['id'] . "&categoria=" . $tarea['categoria'] . "&titulo=" . $tarea['titulo'] . "&descripcion=" . $tarea['descripcion'] . "&correo=" . $tarea['correo'] . "&ubicacion=" . $tarea['ubicacion'] . "&fecha=" . $tarea['fecha'] . "&repeticion=" . $tarea['repeticion'] . "&hora_inicio=" . $tarea['hora_inicio'] . "&hora_fin=" . $tarea['hora_fin'] . "'>Actualizar</a></td>";
     echo "</tr>";
+    echo "</form>";
 }
 
-
-
-
 ?>
+
 
 </html>
