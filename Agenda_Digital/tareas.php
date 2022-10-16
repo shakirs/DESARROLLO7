@@ -11,8 +11,8 @@
     <header>
         <div class="contenedor">
             <h1>Tareas para</h1>
-            <!-- Mostrar fecha actual menos 1 dia -->
-            <h2><?php echo date("d-m-Y", strtotime("-1 day")); ?></h2>
+            <!-- Mostrar la fecha actual menos 1 dia -->
+            <h2><?php echo date('d-m-Y', strtotime('-1 day')); ?></h2>
         </div>
 
         <div class="contenedor">
@@ -54,9 +54,8 @@
     error_reporting(0);
     // Mostrar taraeas para la fecha actual
     $agenda = new Agenda();
-    //fedha actual del sistema menos 1 dia
-    $fecha = date("d-m-Y", strtotime("-1 day"));
-    $tareas = $agenda->mostrar_tareas_hoy($fecha);
+    $tareas = $agenda->mostrar_tareas_hoy(date('Y-m-d', strtotime('-1 day')));
+
     //si no hay tareas para la fecha actual entonces mostrar mensaje
     if (empty($tareas)) {
         echo "<tr><td colspan='11'>No hay tareas para hoy</td></tr>";
@@ -74,9 +73,16 @@
             echo "<td>" . $tarea['repeticion'] . "</td>";
             echo "<td>" . $tarea['hora_inicio'] . "</td>";
             echo "<td>" . $tarea['hora_fin'] . "</td>";
-            echo "<td><a href='editar.php?id=" . $tarea['id'] . "&categoria=" . $tarea['categoria'] . "&titulo=" . $tarea['titulo'] . "&descripcion=" . $tarea['descripcion'] . "&correo=" . $tarea['correo'] . "&ubicacion=" . $tarea['ubicacion'] . "&fecha=" . $tarea['fecha'] . "&repeticion=" . $tarea['repeticion'] . "&hora_inicio=" . $tarea['hora_inicio'] . "&hora_fin=" . $tarea['hora_fin'] . "'> Editar </a> | <a href='tareas.php?id=" . $tarea['id'] . "'>Eliminar</a></td>";
+            echo "<td><a href='editar.php?id=" . $tarea['id'] . "'>Editar</a> | <a href='tareas.php?id=" . $tarea['id'] . "'>Eliminar</a></td>";
             echo "</tr>";
         }
+    }
+
+    //Eliminar tarea
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $obj_agenda = new Agenda();
+        $obj_agenda->eliminar_tarea($id);
     }
 
     ?>

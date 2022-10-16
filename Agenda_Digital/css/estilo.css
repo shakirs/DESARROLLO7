@@ -120,27 +120,26 @@ nav ul li a{
 
 input[type="text"]{
     width: 85%;
-    padding: 5px;
-    border: 2px solid #ccc;
-    border-radius: 1px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
     margin-bottom: 10px;
     font-size: 1em;
 }
 
-input[type="date"]{
-    width: 85%;
-    padding: 5px;
-    border: 2px solid #ccc;
-    border-radius: 1px;
+input[type="date"], input[type="time"]{
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
     margin-bottom: 10px;
     font-size: 1em;
 }
 
-input[type="time"]{
-    width: 85%;
-    padding: 5px;
-    border: 2px solid #ccc;
-    border-radius: 1px;
-    margin-bottom: 10px;
-    font-size: 1em;
+.editar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
