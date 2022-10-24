@@ -29,8 +29,8 @@ class Agenda extends modeloCredencialesBD{
         $this->hora_fin = $hora_fin;
         
         $instruccion = "CALL insertar_tarea('$this->categoria', '$this->titulo', '$this->descripcion', '$this->correo', '$this->ubicacion', '$this->fecha', '$this->repetir', '$this->hora_inicio', '$this->hora_fin')";
-        $consulta = $this->_db->query($instruccion);
-        $resultado = $consulta->fetch_all(MYSQLI_ASSOC);
+        $consulta = $this->_db->query($instruccion); //ejecutar la consulta
+        $resultado = $consulta->fetch_all(MYSQLI_ASSOC); //obtener los datos de la consulta
         if(!$resultado){
             //echo "Fallo al insertar la tarea";
         }else{

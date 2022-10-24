@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Agenda Digital</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 
 <body>
@@ -46,38 +46,37 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-
-            
-    
     <?php
+
+    
     require_once ('class/agenda_funciones.php');
     error_reporting(0);
     // Mostrar taraeas para la fecha actual
     $agenda = new Agenda();
     $tareas = $agenda->mostrar_tareas_hoy(date('Y-m-d', strtotime('-1 day')));
 
+
     //si no hay tareas para la fecha actual entonces mostrar mensaje
     if (empty($tareas)) {
         echo "<tr><td colspan='11'>No hay tareas para hoy</td></tr>";
     } else {
-        //si hay tareas para la fecha actual entonces mostrarlas
-        foreach ($tareas as $tarea) {
-            echo "<tr>";
-            echo "<td>" . $tarea['id'] . "</td>";
-            echo "<td>" . $tarea['categoria'] . "</td>";
-            echo "<td>" . $tarea['titulo'] . "</td>";
-            echo "<td>" . $tarea['descripcion'] . "</td>";
-            echo "<td>" . $tarea['correo'] . "</td>";
-            echo "<td>" . $tarea['ubicacion'] . "</td>";
-            echo "<td>" . $tarea['fecha'] . "</td>";
-            echo "<td>" . $tarea['repeticion'] . "</td>";
-            echo "<td>" . $tarea['hora_inicio'] . "</td>";
-            echo "<td>" . $tarea['hora_fin'] . "</td>";
-            echo "<td><a href='editar.php?id=" . $tarea['id'] . "'>Editar</a> | <a href='tareas.php?id=" . $tarea['id'] . "'>Eliminar</a></td>";
-            echo "</tr>";
-        }
+    //si hay tareas para la fecha actual entonces mostrarlas
+    foreach ($tareas as $tarea) {
+        echo "<tr>";
+        echo "<td>" . $tarea['id'] . "</td>";
+        echo "<td>" . $tarea['categoria'] . "</td>";
+        echo "<td>" . $tarea['titulo'] . "</td>";
+        echo "<td>" . $tarea['descripcion'] . "</td>";
+        echo "<td>" . $tarea['correo'] . "</td>";
+        echo "<td>" . $tarea['ubicacion'] . "</td>";
+        echo "<td>" . $tarea['fecha'] . "</td>";
+        echo "<td>" . $tarea['repeticion'] . "</td>";
+        echo "<td>" . $tarea['hora_inicio'] . "</td>";
+        echo "<td>" . $tarea['hora_fin'] . "</td>";
+        echo "<td><a href='editar.php?id=" . $tarea['id'] . "'>Editar</a> | <a href='tareas.php?id=" . $tarea['id'] . "'>Eliminar</a></td>";
+        echo "</tr>";
     }
-
+}
     //Eliminar tarea
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
