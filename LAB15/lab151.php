@@ -43,7 +43,7 @@
     $nfilas=count($noticia);
 
     if($nfilas > 0){
-        print("<TABLE id='grid> class='display' cellspacing='0'> \n");
+        print("<TABLE id='grid'> class='display' cellspacing='0'> \n");
         print("<THEAD>");
         print("<TR>\n");
         print("<TH>Titulo</TH>\n");
@@ -53,6 +53,7 @@
         print("<TH>Imagen</TH>\n");
         print("</TR\n");
         print("</THEAD>\n");
+        print("<TBODY>");
 
         foreach($noticia as $resultado){
             print("<TR>\n");
@@ -68,6 +69,7 @@
                 print("<TD>&nbsp;</TD>\n");
             }
             print("</TR\n");
+            print("</TBODY>");
         }
         print("</TABLE>\n");
     }else{
