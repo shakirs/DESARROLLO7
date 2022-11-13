@@ -56,6 +56,9 @@ if (isset($_SESSION["usuario_valido"])) {
     echo "<a href='login.php'>Conectar</a>";
 }
 
+//MESAJE DE PRUEBA A VER SI ESTA SINCRONIZADO
+
+
 ?>
     
 </body>
