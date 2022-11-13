@@ -11,6 +11,7 @@
     $ini2 = 2;
     $suma = $ini1 + $ini2;
     echo $suma;
+    echo "<br>";
     ?>
 </body>
 </html>
