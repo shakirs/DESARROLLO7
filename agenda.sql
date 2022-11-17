@@ -172,3 +172,5 @@ SELECT * FROM parcial_2 WHERE id = p_id;
 END$$
 
 
+/*modificar parametro sumatoria de INT a DOUBLE */
+ALTER TABLE `parcial_2` MODIFY `sumatoria` DOUBLE NOT NULL;
