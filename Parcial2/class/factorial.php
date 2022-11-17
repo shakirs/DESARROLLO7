@@ -1,7 +1,7 @@
 <?php
 require_once('modelo.php');
 
-
+//<!-- SHAKIRS FRANCO, ILS232, 8-911-1269 -->//
 class factorial extends modeloCredencialesBD{
 
     protected $numero;

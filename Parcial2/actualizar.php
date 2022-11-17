@@ -1,7 +1,7 @@
 <?php
 
 require_once('class/factorial.php');
-
+//<!-- SHAKIRS FRANCO, ILS232, 8-911-1269 -->//
 //Obtener id de la tarea desde la url con GET
 $id = $_POST['id'];
 $numero2 = $_POST['numero'];
