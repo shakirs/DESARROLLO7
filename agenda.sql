@@ -105,3 +105,70 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+/* Eliminar noticia por id */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_noticia` (IN `p_id` INT)   BEGIN
+DELETE FROM noticias WHERE id = p_id;
+END$$
+
+
+
+/* crear tabla para factorial */
+CREATE TABLE `parcial_2` (
+  /*id autoincremental*/
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `numero` int(11) NOT NULL,
+  `factorial` int(999999999) NOT NULL
+  `sumatoria` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/* insertar factorial */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_factorial` (IN `p_numero` INT)   BEGIN
+INSERT INTO `parcial_2` (`numero`, `factorial`, `sumatoria`) VALUES (p_numero, factorial(p_numero), sumatoria(p_numero));
+END$$
+
+
+
+
+/* crear procedimiento para factorial */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_factorial` (IN `p_numero` INT)   BEGIN
+SET @factorial = 1;
+SET @sumatoria = 0;
+WHILE p_numero > 0 DO
+SET @factorial = @factorial * p_numero;
+SET @sumatoria = @sumatoria + p_numero;
+SET p_numero = p_numero - 1;
+END WHILE;
+INSERT INTO parcial_2 (numero, factorial, sumatoria) VALUES (p_numero, @factorial, @sumatoria);
+END$$
+
+
+/* crear procedimiento para guardar en la tabla */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_guardar` (IN `p_numero` INT, IN `p_factorial` INT, IN `p_sumatoria` INT)   BEGIN
+INSERT INTO parcial_2 (numero, factorial, sumatoria) VALUES (p_numero, p_factorial, p_sumatoria);
+END$$
+
+/* crear procedimiento para mostrar la tabla */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_mostrar` ()   BEGIN
+SELECT * FROM parcial_2;
+END$$
+
+/* crear procedimiento para mostrar la tabla parcial_2 */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_mostrar2` ()   BEGIN
+SELECT * FROM parcial_2;
+END$$
+
+
+/* crear procedimiento para actualizar un registro por su id */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_actualizar` (IN `p_id` INT, IN `p_numero` INT, IN `p_factorial` INT, IN `p_sumatoria` INT)   BEGIN
+
+
+
+/* crear procedimiento para consultar un registro por su id */
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultar_id` (IN `p_id` INT)   BEGIN
+SELECT * FROM parcial_2 WHERE id = p_id;
+END$$
+
+
