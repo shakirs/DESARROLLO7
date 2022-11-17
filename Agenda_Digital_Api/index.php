@@ -83,41 +83,31 @@
     </div>
     <?php
 
-    // crear tarea mediante API
-    header("Access-Control-Allow-Origin: *");
-    header("Content-Type: application/json; charset=UTF-8");
-    header("Access-Control-Allow-Methods: POST");
-    header("Access-Control-Max-Age: 3600");
-    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    require_once('class/agenda_funciones.php');
+    error_reporting(0);
+    $agenda = new Agenda();
 
-    include_once 'conexion/conexion.php';
-    include_once 'clases/tarea.php';
+    if(isset($_POST['insertar'])){
+        $categoria = $_POST['categoria'];
+        $titulo = $_POST['titulo'];
+        $descripcion = $_POST['descripcion'];
+        $correo = $_POST['correo'];
+        $ubicacion = $_POST['ubicacion'];
+        $fecha = $_POST['fecha'];
+        $repetir = $_POST['repetir'];
+        $hora_inicio = $_POST['hora_inicio'];
+        $hora_fin = $_POST['hora_fin'];
 
-    $database = new Conexion();
-
-    $db = $database->obtenerConexion();
-
-    $tarea = new tareas($db);
-
-    $data = json_decode(file_get_contents("php://input"));
-
-    $tarea->categoria = $data->categoria;
-    $tarea->titulo = $data->titulo;
-    $tarea->descripcion = $data->descripcion;
-    $tarea->correo = $data->correo;
-    $tarea->ubicacion = $data->ubicacion;
-    $tarea->fecha = $data->fecha;
-    $tarea->repetir = $data->repetir;
-    $tarea->hora_inicio = $data->hora_inicio;
-    $tarea->hora_fin = $data->hora_fin;
-
-    if($tarea->insertar()){
-        http_response_code(201);
-        echo json_encode(array("message" => "Tarea creada."));
-    }else{
-        http_response_code(503);
-        echo json_encode(array("message" => "No se pudo crear la tarea."));
+        $resultado = $agenda->insertar_tarea($categoria, $titulo, $descripcion, $correo, $ubicacion, $fecha, $repetir, $hora_inicio, $hora_fin);
+        if($resultado){
+            echo "Tarea insertada correctamente";
+        }else{
+            echo "Error al insertar la tarea";
+        }
     }
+        
+
+
 
     ?>
     
