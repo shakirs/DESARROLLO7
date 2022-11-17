@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 // incluir archivos de conexion y objetos
 include_once '../configuracion/conexion.php';
-include_once '../objetos/producto.php';
+include_once '../objetos/tareas.php';
 
 //Api para leer tareas
 
@@ -37,7 +37,7 @@ if($num>0){
             "correo" => $correo,
             "ubicacion" => $ubicacion,
             "fecha" => $fecha,
-            "repetir" => $repetir,
+            "repeticion" => $repeticion,
             "hora_inicio" => $hora_inicio,
             "hora_fin" => $hora_fin
         );

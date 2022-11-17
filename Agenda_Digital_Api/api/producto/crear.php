@@ -22,22 +22,36 @@ $data = json_decode(file_get_contents("php://input"));
 
 //vemos si los datos no estan vacios
 
-if(!empty($data->categoria) && !empty($data->titulo) && !empty($data->descripcion) && !empty($data->ubicacion) && !empty($data->fecha)){
+if(
+!empty($data->id) &&
+!empty($data->categoria) && 
+!empty($data->titulo) && 
+!empty($data->descripcion)&& 
+!empty($data->correo) && 
+!empty($data->ubicacion) && 
+!empty($data->fecha) && 
+!empty($data->repeticion) && 
+!empty($data->hora_inicio) && 
+!empty($data->hora_fin)){
     //Asignamos los valores a los atributos del objeto
+    $tarea->id = $data->id;
     $tarea->categoria = $data->categoria;
     $tarea->titulo = $data->titulo;
     $tarea->descripcion = $data->descripcion;
     $tarea->correo = $data->correo;
     $tarea->ubicacion = $data->ubicacion;
     $tarea->fecha = $data->fecha;
+    $tarea->repeticion = $data->repeticion;
+    $tarea->hora_inicio = $data->hora_inicio;
+    $tarea->hora_fin = $data->hora_fin;
 
     //Creamos la tarea
-    if($tarea->insertar_tarea($categoria, $titulo, $descripcion, $correo, $ubicacion, $fecha, $repetir, $hora_inicio, $hora_fin)){
+    if($tarea->insertar_tarea()){
         //Código de respuesta
         http_response_code(201);
 
         //Mensaje de respuesta
-        echo json_encode(array("mensaje" => "Tarea creada correctamente"));
+        echo json_encode(array("mensaje" => "Tarea creada"));
     }else{
         //Código de respuesta
         http_response_code(503);
@@ -52,6 +66,7 @@ if(!empty($data->categoria) && !empty($data->titulo) && !empty($data->descripcio
     //Mensaje de respuesta
     echo json_encode(array("mensaje" => "No se pudo crear la tarea. Datos incompletos"));
 }
+
 
 
 ?>
