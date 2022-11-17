@@ -145,7 +145,7 @@ DELETE FROM tareas WHERE id = p_id;
 END
 
 
-
+/*modificar parametro sumatoria de INT a DOUBLE */
 
 
 
