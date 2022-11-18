@@ -83,20 +83,33 @@
             return false;
         }
 
-        function eliminar() {
-            // query para eliminar
-            $query = "CALL eliminar_tarea(?)";
-            // sentencia para preparar query
-            $stmt = $this->conn->prepare( $query );
-            // limpiar
-            $this->id = htmlspecialchars( strip_tags( $this->id ) );
-            // vincular id del producto a eliminar
-            $stmt->bindParam( 1, $this->id );
-            // ejecutar query
-            if ( $stmt->execute() ) {
+        //eliminar tarea por id
+        function eliminar_tarea($id){
+            $query = "CALL eliminar_tarea($id)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $this->id);
+            if ($stmt->execute()) {
                 return true;
             }
             return false;
+        }
+
+        //MOSTRAR TAREAS POR FILTRO CAMPO , VALOR con procedimiento almacenado
+        function mostrar_tareas_filtro($campo, $valor) {
+            $query = "CALL filtrar_tareas(?,?)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $campo);
+            $stmt->bindParam(2, $valor);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        //MOSTRAR TAREAS HOY
+        function mostrar_tareas_hoy() {
+            $query = "CALL mostrar_tareas_hoy2('".date('Y-m-d').strtotime("-1 day")."')";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
         }
     
     }

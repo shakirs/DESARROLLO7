@@ -82,34 +82,31 @@
         </form>
     </div>
     <?php
+ require_once('class/agenda_funciones.php');
+ error_reporting(0);
+ $agenda = new Agenda();
 
-    require_once('class/agenda_funciones.php');
-    error_reporting(0);
-    $agenda = new Agenda();
+ if(isset($_POST['insertar'])){
+     $categoria = $_POST['categoria'];
+     $titulo = $_POST['titulo'];
+     $descripcion = $_POST['descripcion'];
+     $correo = $_POST['correo'];
+     $ubicacion = $_POST['ubicacion'];
+     $fecha = $_POST['fecha'];
+     $repetir = $_POST['repetir'];
+     $hora_inicio = $_POST['hora_inicio'];
+     $hora_fin = $_POST['hora_fin'];
 
-    if(isset($_POST['insertar'])){
-        $categoria = $_POST['categoria'];
-        $titulo = $_POST['titulo'];
-        $descripcion = $_POST['descripcion'];
-        $correo = $_POST['correo'];
-        $ubicacion = $_POST['ubicacion'];
-        $fecha = $_POST['fecha'];
-        $repetir = $_POST['repetir'];
-        $hora_inicio = $_POST['hora_inicio'];
-        $hora_fin = $_POST['hora_fin'];
+     $resultado = $agenda->insertar_tarea($categoria, $titulo, $descripcion, $correo, $ubicacion, $fecha, $repetir, $hora_inicio, $hora_fin);
+     if($resultado){
+         echo "Tarea insertada correctamente";
+     }else{
+         echo "Error al insertar la tarea";
+     }
+ }
+     
 
-        $resultado = $agenda->insertar_tarea($categoria, $titulo, $descripcion, $correo, $ubicacion, $fecha, $repetir, $hora_inicio, $hora_fin);
-        if($resultado){
-            echo "Tarea insertada correctamente";
-        }else{
-            echo "Error al insertar la tarea";
-        }
-    }
-        
-
-
-
-    ?>
+?>
     
 
 </body>
